@@ -1,0 +1,90 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #ee9ca7;
+  background: -webkit-linear-gradient(to bottom, #ffdde1, #ee9ca7);
+  background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+  font-family: 'calibri';
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0; 
+}
+
+header, main, footer {
+  flex: 0 1 auto; 
+}
+
+header {
+  flex: 0 1 auto;
+}
+
+main {
+  flex: 1;
+  overflow-y: auto;
+}
+
+footer {
+  flex: 0 1 auto; /* Ajusta la altura del footer según el contenido */
+}
+
+.navbar {
+  padding: 2rem;
+  background: #3A1C71;
+  background: -webkit-linear-gradient(to top, #FFAF7B, #D76D77, #3A1C71);
+  background: linear-gradient(to top, #FFAF7B, #D76D77, #3A1C71);
+}
+
+.navbar-collapse {
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 767px) {
+  .navbar-brand {
+    display: none;
+  }
+}
+
+.custom-carousel-image {
+  height: 50vh; 
+  object-fit: cover; 
+}
+
+.form-check-inline {
+  margin-right: 10px;
+}
+
+.btn-outline-success {
+  white-space: nowrap;
+}
+
+.row .col-md-4 form.d-flex {
+  justify-content: flex-end;
+}
+
+.card {
+  width: 300px;
+}
+
+.card-image-top {
+  height: 150px;
+}
+.custom-footer {
+  background: #3A1C71;
+  background: -webkit-linear-gradient(to top, #FFAF7B, #D76D77, #3A1C71);
+  background: linear-gradient(to top, #FFAF7B, #D76D77, #3A1C71);
+}
+.mb-0{
+  color: black;
+}
+
+.card {
+  background-color: #5fe7d1b9; 
+  border: 1px solid black; 
+  border-radius: 0.25rem; 
+}  
