@@ -73,6 +73,7 @@ footer {
 
 .card-image-top {
   height: 150px;
+  object-fit: cover;
 }
 .custom-footer {
   background: #3A1C71;
@@ -87,4 +88,12 @@ footer {
   background-color: #5fe7d1b9; 
   border: 1px solid black; 
   border-radius: 0.25rem; 
+  width: 18rem;
+  margin: 1rem;
 }  
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

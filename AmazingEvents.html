@@ -19,12 +19,23 @@
               background: -webkit-linear-gradient(to top, #FFAF7B, #D76D77, #3A1C71);
               background: linear-gradient(to top, #FFAF7B, #D76D77, #3A1C71);
             }
-
           .card {
               background-color: #5fe7d1b9; 
               border: 1px solid black; 
               border-radius: 0.25rem; 
             }  
+            .card-img-top {
+            height: 200px; 
+            object-fit: cover; 
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+            #event-details {
+            display: none;
+        }
       </style>
   </head>
   <body>
@@ -248,108 +259,10 @@
             </form>
           </div>
         </div>
-      </div>
-      <div class="container-fluid d-flex flex-wrap">
-        <div class="card m-1">
-          <img src="imagenes_eventos/food_fair.jpg" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Festival of the collectivities</h5>
-            <p class="card-text">
-              Enjoy your favorite dishes from different countries in a unique
-              event for the whole family.
-            </p>
-            <a href="details.html" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>        
-        <div class="card m-1">
-          <img
-            src="imagenes_eventos/outing_to_the_museum.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Art Exhibition</h5>
-            <p class="card-text">
-              Let's go to the art museum for an incredible tour to learn about
-              the largest dinosaurs.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card m-1">
-          <img
-            src="imagenes_eventos/costume_party.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Halloween Night</h5>
-            <p class="card-text">
-              Come in your scariest costume character to win amazing prizes.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card m-1">
-          <img
-            src="imagenes_eventos/music_concert.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Metallica in concert</h5>
-            <p class="card-text">
-              The only concert of the most emblematic band in the world.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card m-1">
-          <img
-            src="imagenes_eventos/marathon.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">10K for life</h5>
-            <p class="card-text">
-              Come and exercise, improve your health and lifestyle.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card m-1">
-          <img
-            src="imagenes_eventos/books.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">School Book Fair</h5>
-            <p class="card-text">
-              Bring your unused school book and bring the one you need.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card m-1">
-          <img
-            src="imagenes_eventos/cinema.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Avengers</h5>
-            <p class="card-text">
-              Marvel's Avengers 3d premiere the start of an epic saga with your
-              best superheroes.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
+       </div>
+       <div class="container-fluid d-flex flex-wrap" id="events-container"></div>
+       <div class="container mt-4" id="event-details"></div>
     </main>
-
     <footer class="custom-footer text-white mt-4">
       <div class="container py-4">
           <div class="row">
@@ -369,5 +282,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="AmazingEvents.js"></script>
   </body>
 </html>

@@ -19,10 +19,24 @@
             background: linear-gradient(to top, #FFAF7B, #D76D77, #3A1C71);
         }
         .card {
-            background-color: #5fe7d1b9; 
-            border: 1px solid black; 
-            border-radius: 0.25rem; 
-        }  
+      background-color: #5fe7d1b9;
+      border: 1px solid black;
+      border-radius: 0.25rem;
+      width: 18rem; /* Establece un ancho uniforme para las tarjetas */
+      margin: 1rem;
+    }
+    .card-img-top {
+      height: 200px; /* Establece una altura fija para las imágenes */
+      object-fit: cover; /* Ajusta la imagen para llenar el contenedor sin distorsión */
+    }
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    #event-details {
+      display: none;
+    }
     </style>
   </head>
   <body>
@@ -72,7 +86,6 @@
         </div>
       </nav>
     </header>
-
     <main class="main">
       <div
         id="carouselExampleIndicators"
@@ -114,7 +127,6 @@
           ></button>
         </div>
         <div class="carousel-inner">
-
           <div class="carousel-item active">
             <img
               src="imagenes_eventos/optional_banner_1.jpg"
@@ -158,7 +170,6 @@
               <h3>CONTACT</h3>
             </div>
           </div>
-
           <div class="carousel-item">
             <img
               src="imagenes_eventos/optional_banner_5.jpg"
@@ -189,7 +200,6 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-
       <div class="container mt-4">
         <div class="row mb-3 justify-content-between">
           <div class="col-md-8">
@@ -254,54 +264,9 @@
           </div>
         </div>
       </div>
-
-      <div class="container-fluid d-flex flex-wrap">
-        <div class="card m-1">
-          <img
-            src="imagenes_eventos/costume_party.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Halloween Night</h5>
-            <p class="card-text">
-              Come in your scariest costume character to win amazing prizes.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card m-1">
-          <img
-            src="imagenes_eventos/music_concert.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Metallica in concert</h5>
-            <p class="card-text">
-              The only concert of the most emblematic band in the world.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        <div class="card m-1">
-          <img
-            src="imagenes_eventos/cinema.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">Avengers</h5>
-            <p class="card-text">
-              Marvel's Avengers 3d premiere the start of an epic saga with your
-              best superheroes.
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
+      <div class="container-fluid d-flex flex-wrap" id="events-container"></div>
+      <div class="container mt-4" id="event-details"></div>
     </main>
-
     <footer class="custom-footer text-white mt-4">
       <div class="container py-4">
           <div class="row">
@@ -316,11 +281,11 @@
           </div>
       </div>
   </footer>
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="upcomingevents.js"></script>
   </body>
 </html>
