@@ -207,28 +207,30 @@ const data = {
     `;
   }
   
-  function createEventCard(event) {
-    return `
-      <div class="card m-1" onclick="showEventDetails('${event._id}')">
-        <img src="${event.image}" class="card-img-top" alt="${event.name}" />
-        <div class="card-body">
-          <h5 class="card-title">${event.name}</h5>
-          <p class="card-text">${event.description}</p>
-          <a href="javascript:void(0)" class="btn btn-primary">More Info</a>
-        </div>
-      </div>
-    `;
-  }
-  
-  function displayEvents() {
+  function displayEvents(filteredEvents) {
     const eventsContainer = document.getElementById("events-container");
-    
-    const filteredEvents = data.events.filter(event => new Date(event.date) >= new Date("2023-01-01"));
- 
     eventsContainer.innerHTML = '';
     filteredEvents.forEach(event => {
       eventsContainer.innerHTML += createEventCard(event);
     });
+  }
+  
+  function applyFilters() {
+    const selectedCategories = Array.from(document.querySelectorAll('#filters-container input[type="checkbox"]:checked'))
+      .map(checkbox => checkbox.dataset.category);
+  
+    const searchQuery = document.getElementById('search-input').value.toLowerCase();
+  
+    const filteredEvents = data.events.filter(event => {
+      const eventDate = new Date(event.date);
+      const isAfterDate = eventDate >= new Date(data.currentDate);
+      const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(event.category);
+      const matchesSearch = event.name.toLowerCase().includes(searchQuery) || event.description.toLowerCase().includes(searchQuery);
+  
+      return isAfterDate && matchesCategory && matchesSearch;
+    });
+  
+    displayEvents(filteredEvents);
   }
   
   function showEventDetails(eventId) {
@@ -264,4 +266,15 @@ const data = {
     document.getElementById('events-container').style.display = 'flex';
   }
   
-  document.addEventListener("DOMContentLoaded", displayEvents);
+  document.addEventListener("DOMContentLoaded", () => {
+    displayEvents(data.events.filter(event => new Date(event.date) >= new Date(data.currentDate)));
+  
+    document.getElementById('search-form').addEventListener('submit', event => {
+      event.preventDefault();
+      applyFilters();
+    });
+  
+    document.querySelectorAll('#filters-container input[type="checkbox"]').forEach(checkbox => {
+      checkbox.addEventListener('change', applyFilters);
+    });
+  });

@@ -194,6 +194,7 @@ const data = {
       },
     ],
   };
+
   function createEventCard(event) {
     return `
       <div class="card m-1" onclick="showEventDetails('${event._id}')">
@@ -207,17 +208,20 @@ const data = {
     `;
   }
   
-  function displayEvents() {
+  function displayEvents(events) {
     const eventsContainer = document.getElementById("events-container");
-    data.events.forEach(event => {
-      eventsContainer.innerHTML += createEventCard(event);
-    });
+    if (eventsContainer) {
+      eventsContainer.innerHTML = ''; // Limpiar contenedor antes de mostrar eventos
+      events.forEach(event => {
+        eventsContainer.innerHTML += createEventCard(event);
+      });
+    }
   }
   
   function showEventDetails(eventId) {
     const event = data.events.find(e => e._id === eventId);
     const eventDetailsContainer = document.getElementById('event-details');
-    if (event) {
+    if (eventDetailsContainer && event) {
       eventDetailsContainer.innerHTML = `
         <div class="card">
           <img src="${event.image}" class="card-img-top" alt="${event.name}" />
@@ -237,14 +241,65 @@ const data = {
       `;
       eventDetailsContainer.style.display = 'block';
       document.getElementById('events-container').style.display = 'none';
-    } else {
+    } else if (!event) {
       eventDetailsContainer.innerHTML = '<p>Event not found.</p>';
     }
   }
   
   function hideEventDetails() {
-    document.getElementById('event-details').style.display = 'none';
-    document.getElementById('events-container').style.display = 'flex';
+    const eventDetailsContainer = document.getElementById('event-details');
+    if (eventDetailsContainer) {
+      eventDetailsContainer.style.display = 'none';
+      document.getElementById('events-container').style.display = 'flex';
+    }
   }
   
-  document.addEventListener("DOMContentLoaded", displayEvents);
+  function generateCategoryFilters() {
+    const filtersContainer = document.getElementById('filters-container');
+    if (filtersContainer) {
+      const categories = [...new Set(data.events.map(event => event.category))];
+      filtersContainer.innerHTML = categories.map(category => `
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="category-${category}"
+            value="${category}"
+          />
+          <label class="form-check-label" for="category-${category}">${category}</label>
+        </div>
+      `).join('');
+    }
+  }
+  
+  function filterEvents() {
+    const searchInput = document.getElementById('search-input').value.toLowerCase();
+    const selectedCategories = [...document.querySelectorAll('#filters-container input:checked')]
+      .map(input => input.value);
+  
+    const filteredEvents = data.events.filter(event => {
+      const matchesSearch = event.name.toLowerCase().includes(searchInput) || event.description.toLowerCase().includes(searchInput);
+      const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(event.category);
+      return matchesSearch && matchesCategory;
+    });
+  
+    displayEvents(filteredEvents);
+  }
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    generateCategoryFilters();
+    filterEvents(); // Mostrar eventos filtrados inicialmente
+  
+    const searchForm = document.getElementById('search-form');
+    if (searchForm) {
+      searchForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        filterEvents();
+      });
+    }
+  
+    const filtersContainer = document.getElementById('filters-container');
+    if (filtersContainer) {
+      filtersContainer.addEventListener('change', filterEvents);
+    }
+  });

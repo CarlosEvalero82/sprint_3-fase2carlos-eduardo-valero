@@ -1,3 +1,4 @@
+/* Reinicio de estilos globales */
 * {
   padding: 0;
   margin: 0;
@@ -17,10 +18,6 @@ body {
 
 header, main, footer {
   flex: 0 1 auto; 
-}
-
-header {
-  flex: 0 1 auto;
 }
 
 main {
@@ -67,33 +64,35 @@ footer {
   justify-content: flex-end;
 }
 
+/* Estilo de la tarjeta */
 .card {
   width: 300px;
+  background-color: #5fe7d1b9; 
+  border: 1px solid black; 
+  border-radius: 0.25rem; 
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-image-top {
   height: 150px;
   object-fit: cover;
 }
+
+.card-body {
+  flex: 1; /* Hace que el contenido de la tarjeta ocupe el espacio restante */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .custom-footer {
   background: #3A1C71;
   background: -webkit-linear-gradient(to top, #FFAF7B, #D76D77, #3A1C71);
   background: linear-gradient(to top, #FFAF7B, #D76D77, #3A1C71);
 }
-.mb-0{
+
+.mb-0 {
   color: black;
-}
-
-.card {
-  background-color: #5fe7d1b9; 
-  border: 1px solid black; 
-  border-radius: 0.25rem; 
-  width: 18rem;
-  margin: 1rem;
-}  
-
-.card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
